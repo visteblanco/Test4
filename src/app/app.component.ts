@@ -6,31 +6,31 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // videoElement!: ElementRef;
-  // canvasElement!: ElementRef;
+  @ViewChild('videoElement', { static: false }) videoElement!: ElementRef;
+  @ViewChild('canvasElement', { static: false }) canvasElement!: ElementRef;
 
-  // async ngAfterViewInit() {
-  //   try {
-  //     const constraints = {
-  //       video: {
-  //         facingMode: 'environment',
-  //         width: { ideal: 4096 },
-  //         height: { ideal: 2160 }
-  //       }
-  //     };
+  async ngAfterViewInit() {
+    try {
+      const constraints = {
+        video: {
+          facingMode: 'environment',
+          width: { ideal: 4096 },
+          height: { ideal: 2160 }
+        }
+      };
 
-  //     const stream = await navigator.mediaDevices.getUserMedia(constraints);
-  //     this.videoElement.nativeElement.srcObject = stream;
-  //   } catch (error) {
-  //     console.error('Error accessing media devices.', error);
-  //   }
-  // }
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      this.videoElement.nativeElement.srcObject = stream;
+    } catch (error) {
+      console.error('Error accessing media devices.', error);
+    }
+  }
 
-  // capture() {
-  //   const canvas = this.canvasElement.nativeElement;
-  //   const video = this.videoElement.nativeElement;
-  //   canvas.width = video.videoWidth;
-  //   canvas.height = video.videoHeight;
-  //   canvas.getContext('2d').drawImage(video, 0, 0);
-  // }
+  capture() {
+    const canvas = this.canvasElement.nativeElement;
+    const video = this.videoElement.nativeElement;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+  }
 }

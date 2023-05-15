@@ -1,6 +1,19 @@
 <div class="container">
     <h1>Angular Camera App</h1>
-    <!-- <video #videoElement autoplay></video> -->
-    <!-- <canvas #canvasElement></canvas>
-    <button (click)="capture()">Capturar foto</button> -->
+    <video #videoElement autoplay></video>
+    <canvas #canvasElement></canvas>
+    <button (click)="capture()">Capturar foto</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let image of images | async">
+                <td><img [src]="image"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
